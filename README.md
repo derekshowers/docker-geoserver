@@ -3,6 +3,10 @@
 A simple docker container that runs Geoserver influenced by this docker
 recipe: https://github.com/eliotjordan/docker-geoserver/blob/master/Dockerfile
 
+## TODO
+
+Move this to a CEMML gitlab repo.
+
 ## Setup for WFMAP Local Dev
 
 This project has been forked and modified for WFMAP testing purposes. The main additions that have been made are as follows.
