@@ -3,6 +3,25 @@
 A simple docker container that runs Geoserver influenced by this docker
 recipe: https://github.com/eliotjordan/docker-geoserver/blob/master/Dockerfile
 
+## Setup for WFMAP Local Dev
+
+This project has been forked and modified for WFMAP testing purposes. The main additions that have been made are as follows.
+
+*  System Monitoring Community Module added: This allows for real time monitoring of Geoserver performance, and is viewable in the Server Status page when logged into Geoserver as an administrator.
+*  Native JAI Extension added: This extension should allow for faster rasterization when serving WMS layers from Geoserver. 
+
+### Running the WFMAP configuration
+
+```shell
+docker-compose build
+docker-compose up -d
+
+docker exec -it my-geoserver /bin/bash
+$ cd /usr/lib/jvm/java-8-oracle
+$ sh jai-1_1_3-lib-linux-amd64-jdk.bin
+$ sh jai_imageio-1_1-lib-linux-amd64-jdk.bin
+```
+
 ## Getting the image
 
 There are various ways to get the image onto your system:

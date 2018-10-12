@@ -37,7 +37,7 @@ ENV JAVA_DEBIAN_VERSION=
 # Set JAVA_HOME to /usr/lib/jvm/default-java and link it to OpenJDK installation
 RUN ln -s /usr/lib/jvm/java-8-openjdk-amd64 /usr/lib/jvm/default-java
 ENV JAVA_HOME /usr/lib/jvm/default-java
-ARG ORACLE_JDK=false
+ARG ORACLE_JDK=true
 ARG TOMCAT_EXTRAS=true
 ARG COMMUNITY_MODULES=true
 
@@ -49,6 +49,13 @@ RUN chmod +x /scripts/*.sh
 RUN /scripts/setup.sh
 ADD scripts/controlflow.properties $GEOSERVER_DATA_DIR
 ADD scripts/sqljdbc4-4.0.jar $CATALINA_HOME/webapps/geoserver/WEB-INF/lib/
+
+# Add Native JAI files, these will need to be started in the running container manually
+ADD jai_imageio-1_1-lib-linux-amd64-jdk.bin /usr/lib/jvm/java-8-oracle/jai_imageio-1_1-lib-linux-amd64-jdk.bin
+ADD jai-1_1_3-lib-linux-amd64-jdk.bin /usr/lib/jvm/java-8-oracle/jai-1_1_3-lib-linux-amd64-jdk.bin
+
+# RUN sh /usr/lib/jvm/java-6-sun/jai_imageio-1_1-lib-linux-amd64-jdk.bin
+# RUN sh /usr/lib/jvm/java-6-sun/jai-1_1_3-lib-linux-amd64-jdk.bin
 
 # Clean up APT when done.
 RUN echo "Yes, do as I say!" | apt-get remove --force-yes sed

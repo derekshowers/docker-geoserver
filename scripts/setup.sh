@@ -116,7 +116,7 @@ if ls /tmp/resources/*jdk-*-linux-x64.tar.gz > /dev/null 2>&1; then \
 # Build geogig and other community modules
 
 if  [ "$COMMUNITY_MODULES" == true ]; then
-    array=(geoserver-${GS_VERSION:0:4}-SNAPSHOT-geogig-plugin.zip geoserver-${GS_VERSION:0:4}-SNAPSHOT-mbtiles-plugin.zip)
+    array=(geoserver-${GS_VERSION:0:4}-SNAPSHOT-geogig-plugin.zip geoserver-${GS_VERSION:0:4}-SNAPSHOT-mbtiles-plugin.zip geoserver-${GS_VERSION:0:4}-SNAPSHOT-status-monitoring-plugin.zip)
     for i in "${array[@]}"
     do
 	    wget -c https://build.geoserver.org/geoserver/${GS_VERSION:0:5}x/community-latest/${i} -O /tmp/resources/plugins/${i}
